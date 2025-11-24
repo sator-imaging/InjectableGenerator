@@ -1,3 +1,11 @@
+[![nuget](https://img.shields.io/nuget/vpre/InjectableGenerator)](https://www.nuget.org/packages/InjectableGenerator)
+&nbsp;
+[![DeepWiki](https://deepwiki.com/badge.svg)](https://deepwiki.com/sator-imaging/InjectableGenerator)
+
+
+
+
+
 # InjectableGenerator
 
 A C# source generator that enables runtime code generation by compiling and invoking user-defined generators at compile time. This allows you to inject custom code generation logic into your build process without creating a full Roslyn analyzer package.
@@ -12,14 +20,20 @@ A C# source generator that enables runtime code generation by compiling and invo
 
 ## 📦 Installation
 
-Add the project reference to your `.csproj` file:
+Run the following command in the workspace:
+
+```bash
+dotnet add package InjectableGenerator
+```
+
+or add the project reference to your `.csproj` file:
 
 ```xml
 <ItemGroup>
-  <ProjectReference Include="path/to/InjectableGenerator.csproj">
-    <OutputItemType>Analyzer</OutputItemType>
-    <ReferenceOutputAssembly>false</ReferenceOutputAssembly>
-  </ProjectReference>
+  <PackageReference Include="InjectableGenerator" Version="1.0.0">
+    <PrivateAssets>all</PrivateAssets>
+    <IncludeAssets>runtime; build; native; contentfiles; analyzers</IncludeAssets>
+  </PackageReference>
 </ItemGroup>
 ```
 
