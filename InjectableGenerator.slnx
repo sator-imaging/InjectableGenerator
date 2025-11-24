@@ -1,0 +1,6 @@
+<Solution>
+  <Project Path="./src/InjectableGenerator.csproj"/>
+  <Project Path="./generator/InjectableGenerator.Generator.csproj"/>
+  <Project Path="./codefixes/InjectableGenerator.CodeFixes.csproj"/>
+  <Project Path="./sample/InjectableGenerator.Sample.csproj"/>
+</Solution>
