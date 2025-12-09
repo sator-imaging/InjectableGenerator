@@ -15,19 +15,16 @@
     <StartProgram>$(DevEnvDir)devenv.exe</StartProgram>
     <StartArguments>/rootsuffix $(VSSDKTargetPlatformRegRootSuffix)</StartArguments>
   </PropertyGroup>
-  <!-- https://github.com/dotnet/roslyn/blob/main/docs/features/incremental-generators.cookbook.md#package-a-generator-as-a-nuget-package -->
+
   <!--
-  <ItemGroup Condition=" Exists('$(OutputPath)/$(AssemblyName).dll') ">
+    Pack roslyn assemblies into a package.
+    DO NOT reference projects; it will add unnecessary dependency to the package.
   -->
   <ItemGroup>
-    <!-- Package the generator in the analyzer directory of the nuget package -->
-    <None Include="$(OutputPath)/$(AssemblyName).Generator.dll" Pack="true" PackagePath="analyzers/dotnet/cs" Visible="false" />
-    <None Include="$(OutputPath)/$(AssemblyName).CodeFixes.dll" Pack="true" PackagePath="analyzers/dotnet/cs" Visible="false" />
-  </ItemGroup>
-
-  <ItemGroup>
-    <ProjectReference Include="..\generator\InjectableGenerator.Generator.csproj" />
-    <ProjectReference Include="..\codefixes\InjectableGenerator.CodeFixes.csproj" />
+    <None Include="$(MSBuildThisProjectDirectory)../generator/$(OutputPath)/$(AssemblyName).Generator.dll"
+          Pack="true" PackagePath="analyzers/dotnet/cs" Visible="false" />
+    <None Include="$(MSBuildThisProjectDirectory)../codefixes/$(OutputPath)/$(AssemblyName).CodeFixes.dll"
+          Pack="true" PackagePath="analyzers/dotnet/cs" Visible="false" />
   </ItemGroup>
 
   <PropertyGroup>
